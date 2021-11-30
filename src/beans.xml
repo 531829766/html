@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-4.3.xsd
-       http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- 读取db.properties-->
 
     <context:property-placeholder location="classpath:db.properties"/>
 
@@ -51,9 +46,22 @@
 
         <property name="dataSource" ref="dataSource" />
 
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+
     </bean>
 
+    <!--定义一个StudentDao的Bean
+    <bean id="studentDao" class="cn.edu.hziee.dao.StudentDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>-->
 
+<!--    <bean id="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+
+<!--        <property name="mapperInterface" value="cn.edu.hziee.mapper.StudentMapper1"/>-->
+
+<!--        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
+
+<!--    </bean>-->
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 
@@ -62,6 +70,6 @@
     </bean>
 
     <!--开启扫描-->
-
     <context:component-scan base-package="cn.edu.hziee.service"/>
+
 </beans>
