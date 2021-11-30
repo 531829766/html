@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.hziee.mapper.DoctorMapper">
+    <!--按id查找用户-->
+    <select id="findDoctorById" parameterType="Integer" resultType="model.Doctor">
+
+    select * from  doctor  where doctor_id=#{doctor_id}
+    </select>
+
+    <update id="update" parameterType="model.Doctor">
+        update doctor
+        <set>
+            <if test="doctor_name!=null and doctor_name !=''">
+                doctor_name = #{doctor_name},
+            </if>
+            <if test="doctor_password!=null and doctor_password !=''">
+                doctor_password = #{doctor_password},
+            </if>
+            <if test="doctor_phone!=null and doctor_phone !=''">
+                doctor_phone = #{doctor_phone},
+            </if>
+            <if test="doctor_identity!=null and doctor_identity !=''">
+                doctor_identity = #{doctor_identity},
+            </if>
+            <if test="doctor_specialty!=null and doctor_specialty !=''">
+                doctor_specialty = #{doctor_specialty},
+            </if>
+        </set>
+        where doctor_id=#{doctor_id}
+    </update>
+
+    <!--按用户名查找用户-->
+    <select id="findDoctorByIdName" parameterType="string" resultType="model.Doctor">
+    select * from doctor where doctor_name = #{doctor_name}
+</select>
+
+    <insert id="insert" parameterType="model.Doctor">
+        insert into doctor(doctor_id,doctor_name,doctor_password,doctor_phone,doctor_identity,doctor_specialty)
+        values(#{doctor_id},#{doctor_name},#{doctor_password},#{doctor_phone},#{doctor_identity},#{doctor_specialty})
+    </insert>
+
+
+
+    <delete id="delete" parameterType="Integer">
+         delete from doctor where doctor_id=#{doctor_id}
+     </delete>
+
+    <!-- 分页-->
+
+    <select id="findByDoctorPage" parameterType="HashMap" resultType="model.Doctor">
+        select * from doctor
+        <where>
+            <if test="doctor_name!=null and doctor_name !=''">
+                and doctor_name = #{doctor_name}
+            </if>
+            <if test="doctor_password!=null and doctor_password !=''">
+                and doctor_password = #{doctor_password}
+            </if>
+            <if test="doctor_phone!=null and doctor_phone !=''">
+                and doctor_phone = #{doctor_phone}
+            </if>
+            <if test="doctor_identity!=null and doctor_identity !=''">
+                and doctor_identity = #{doctor_identity}
+            </if>
+            <if test="doctor_specialty!=null and doctor_specialty !=''">
+                and doctor_specialty = #{doctor_specialty}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="selectDoctorCount" parameterType="HashMap" resultType="Integer">
+        select count(*) from doctor
+        <where>
+            <if test="doctor_name !=null and doctor_name !=''">
+                and doctor_name = #{doctor_name}
+            </if>
+            <if test="doctor_password !=null and doctor_password !=''">
+                and doctor_password = #{doctor_password}
+            </if>
+            <if test="doctor_phone !=null and doctor_phone !=''">
+                and doctor_phone = #{doctor_phone}
+            </if>
+            <if test="doctor_identity !=null and doctor_identity !=''">
+                and doctor_identity = #{doctor_identity}
+            </if>
+            <if test="doctor_specialty !=null and doctor_specialty !=''">
+                and doctor_specialty = #{doctor_specialty}
+            </if>
+        </where>
+        <if test="start!=null and size!=null">limit ${start},${size}</if>
+    </select>
+</mapper>
