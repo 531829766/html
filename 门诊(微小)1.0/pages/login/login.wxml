@@ -1,0 +1,23 @@
+<view class='main'>
+  <view class='body'>
+    <form bindsubmit='submit'>
+      <view class='username'>
+        <text>用户名：</text>
+        <input placeholder='账号/手机号/微信/QQ' name="username" value='1433223'></input>
+      </view>
+      <view class='password'>
+        <text>密  码：</text>
+        <input password='true' name="pwd" value='123456'></input>
+      </view>
+      <view>
+        <button type="primary" plain>医师登录</button>
+        <button type="primary" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo" plain>患者登录</button>
+        <button type="primary" plain>注册</button>
+      </view>
+    </form>
+  </view>
+</view>
+
+
+
+

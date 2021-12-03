@@ -1,0 +1,3 @@
+<view class="mz_index">
+  <SearchInput></SearchInput>
+</view>

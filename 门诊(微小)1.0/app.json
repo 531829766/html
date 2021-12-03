@@ -1,0 +1,56 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/login/login",
+    "pages/order/order",
+    "pages/mine/mine",
+    "pages/money/money",
+    "pages/logs/logs",
+    "pages/Search/Search"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#0094ff",
+    "navigationBarTitleText": "门诊挂号收费系统",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icon/_home.png",
+      "selectedIconPath": "icon/home.png"
+      },
+      {
+      "pagePath": "pages/order/order",
+      "text": "挂号订单",
+      "iconPath": "icon/_order.png",
+      "selectedIconPath": "icon/order.png"
+      },
+      {
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "icon/_mine.png",
+      "selectedIconPath": "icon/mine.png"
+      },
+      {
+        "pagePath": "pages/money/money",
+        "text": "门诊费用",
+        "iconPath": "icon/_money.png",
+        "selectedIconPath": "icon/money.png"
+        }
+  ],
+  "color": "black",
+  "borderStyle": "black",
+  "selectedColor": "0094ff"
+ 
+
+
+    
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
