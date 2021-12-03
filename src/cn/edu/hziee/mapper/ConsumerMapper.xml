@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.hziee.mapper.ConsumerMapper">
+
+    <!--按id查找用户-->
+    <select id="findConsumerById" parameterType="Integer" resultType="cn.edu.hziee.model.Consumer">
+
+    select * from  consumer  where id=#{id}
+</select>
+    <update id="update" parameterType="cn.edu.hziee.model.Consumer">
+        update consumer
+        <set>
+            <if test="username!=null and username !=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password !=''">
+            password = #{password},
+        </if>
+            <if test="balance!=null and balance !=''">
+                balance = #{balance},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!--按用户名查找用户-->
+    <select id="findConsumerByIdName" parameterType="string" resultType="cn.edu.hziee.model.Consumer">
+    select * from consumer where username=#{username}
+</select>
+
+    <insert id="insert" parameterType="cn.edu.hziee.model.Consumer">
+        insert into consumer(id,username,password,balance)
+        values(#{id},#{username},#{password},#{balance})
+    </insert>
+
+
+
+    <delete id="delete" parameterType="Integer">
+         delete from consumer where id=#{id}
+     </delete>
+
+    <!-- 分页-->
+
+    <select id="findByConsumerPage" parameterType="HashMap" resultType="cn.edu.hziee.model.Consumer">
+        select * from consumer
+        <where>
+            <if test="username!=null and username !=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password !=''">
+                password = #{password},
+            </if>
+            <if test="balance!=null and balance !=''">
+                balance = #{balance},
+            </if>
+        </where>
+        <if test="start!=null and size!=null">limit ${start},${size}</if>
+    </select>
+
+    <select id="selectConsumerCount" parameterType="HashMap" resultType="Integer">
+        select count(*) from consumer
+        <where>
+            <if test="username!=null and username !=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password !=''">
+                password = #{password},
+            </if>
+            <if test="balance!=null and balance !=''">
+                balance = #{balance},
+            </if>
+        </where>
+    </select>
+</mapper>

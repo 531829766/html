@@ -6,36 +6,142 @@
 
 <mapper namespace="cn.edu.hziee.mapper.StudentMapper">
 
-
-
     <select id="findById" parameterType="Integer" resultType="cn.edu.hziee.model.Student">
-
         select * from student where id=#{id}
-
     </select>
 
+    <update id="update" parameterType="cn.edu.hziee.model.Student">
+        update student
+        <set>
+            <if test="code!=null and code !=''">
+                code = #{code},
+            </if>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="age!=null and age!=''">
+                age = #{age},
+            </if>
+            <if test="gender!=null and gender !=''">
+                gender = #{gender},
+            </if>
+            <if test="nation!=null and nation !=''">
+                 nation = #{nation},
+            </if>
+            <if test="birthday!=null and birthday !=''">
+                 birthday = #{birthday},
+            </if>
+            <if test="native_place!=null and native_place !=''">
+                 native_place = #{native_place},
+            </if>
 
+            <if test="enter_time!=null and enter_time !=''">
+                 enter_time = #{enter_time},
+            </if>
+
+            <if test="department!=null and department !=''">
+                 department = #{department},
+            </if>
+
+            <if test="post!=null and post !=''">
+                 post = #{post},
+            </if>
+
+        </set>
+        where id=#{id}
+    </update>
 
     <select id="findByName" parameterType="String" resultType="cn.edu.hziee.model.Student">
-
         select * from student where username like concat('%',#{value},'%')
-
     </select>
 
 
 
     <insert id="insert" parameterType="cn.edu.hziee.model.Student">
-
-        insert into student(id,code,username,age,gender) values(#{id},#{code},#{username},#{age},#{gender})
-
+        insert into student(id,code,username,age,gender,nation,birthday,native_place,enter_time,department,post)
+        values(#{id},#{code},#{username},#{age},#{gender},#{nation},#{birthday},#{native_place},#{enter_time},#{department},#{post})
     </insert>
 
 
 
     <delete id="delete" parameterType="Integer">
-
          delete from student where id=#{id}
-
      </delete>
 
+    <!-- 分页-->
+
+    <select id="findByPage" parameterType="HashMap" resultType="cn.edu.hziee.model.Student">
+    select * from student
+    <where>
+        <if test="code!=null and code !=''">
+            and code = #{code}
+        </if>
+        <if test="username!=null and username!=''">
+            and username like concat('%',#{username},'%')
+        </if>
+        <if test="age!=null and age!=''">
+            and age = #{age}
+        </if>
+        <if test="gender!=null and gender !=''">
+            and gender = #{gender}
+        </if>
+        <if test="nation!=null and nation !=''">
+            and nation = #{nation}
+        </if>
+        <if test="birthday!=null and birthday !=''">
+            and birthday = #{birthday}
+        </if>
+        <if test="native_place!=null and native_place !=''">
+            and native_place = #{native_place}
+        </if>
+        <if test="enter_time!=null and enter_time !=''">
+            and enter_time = #{enter_time}
+        </if>
+        <if test="department!=null and department !=''">
+            and department = #{department}
+        </if>
+        <if test="post!=null and post !=''">
+            and post = #{post}
+        </if>
+
+    </where>
+    <if test="start!=null and size!=null">limit ${start},${size}</if>
+</select>
+
+    <select id="selectCount" parameterType="HashMap" resultType="Integer">
+        select count(*) from student
+        <where>
+            <if test="code!=null and code !=''">
+                and code = #{code}
+            </if>
+            <if test="username!=null and username!=''">
+                and username like concat('%',#{username},'%')
+            </if>
+            <if test="age!=null and age!=''">
+                and age = #{age}
+            </if>
+            <if test="gender!=null and gender !=''">
+                and gender = #{gender}
+            </if>
+            <if test="nation!=null and nation !=''">
+                and nation = #{nation}
+            </if>
+            <if test="birthday!=null and birthday !=''">
+                and birthday = #{birthday}
+            </if>
+            <if test="native_place!=null and native_place !=''">
+                and native_place = #{native_place}
+            </if>
+            <if test="enter_time!=null and enter_time !=''">
+                and enter_time = #{enter_time}
+            </if>
+            <if test="department!=null and department !=''">
+                and department = #{department}
+            </if>
+            <if test="post!=null and post !=''">
+                and post = #{post}
+            </if>
+
+        </where>
+    </select>
 </mapper>
