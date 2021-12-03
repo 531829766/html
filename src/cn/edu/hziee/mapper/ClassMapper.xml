@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.hziee.mapper.ClassMapper">
+
+    <select id="findByClassId" parameterType="Integer" resultType="cn.edu.hziee.model.Class">
+        select * from class where id=#{id}
+    </select>
+
+    <update id="update" parameterType="cn.edu.hziee.model.Class">
+        update class
+        <set>
+            <if test="class_name!=null and class_name !=''">
+                class_name = #{class_name},
+            </if>
+            <if test="grade!=null and grade!=''">
+                grade = #{grade},
+            </if>
+            <if test="frequency!=null and frequency!=''">
+                frequency = #{frequency},
+            </if>
+            <if test="class_place!=null and class_place !=''">
+                class_place = #{class_place},
+            </if>
+            <if test="class_size!=null and class_size !=''">
+                class_size = #{class_size},
+            </if>
+            <if test="headmaster!=null and headmaster !=''">
+                headmaster = #{headmaster},
+            </if>
+
+
+        </set>
+        where id=#{id}
+    </update>
+
+    <select id="findByClassName" parameterType="String" resultType="cn.edu.hziee.model.Class">
+        select * from class where username like concat('%',#{value},'%')
+    </select>
+
+
+
+    <insert id="insert" parameterType="cn.edu.hziee.model.Class">
+        insert into class(id,class_name,grade,frequency,class_place,class_size,headmaster)
+        values(#{id},#{class_name},#{grade},#{frequency},#{class_place},#{class_size},#{headmaster})
+    </insert>
+
+
+
+    <delete id="delete" parameterType="Integer">
+         delete from class where id=#{id}
+     </delete>
+
+    <!-- 分页-->
+
+    <select id="findByClassPage" parameterType="HashMap" resultType="cn.edu.hziee.model.Class">
+        select * from class
+        <where>
+            <if test="class_name!=null and class_name !=''">
+                and class_name = #{class_name}
+            </if>
+            <if test="grade!=null and grade!=''">
+                and grade
+                like concat('%',#{grade},'%')
+            </if>
+            <if test="frequency!=null and frequency!=''">
+                and frequency = #{frequency}
+            </if>
+            <if test="class_place!=null and class_place !=''">
+                and class_place = #{class_place}
+            </if>
+            <if test="class_size!=null and class_size !=''">
+                and class_size = #{class_size}
+            </if>
+            <if test="headmaster!=null and headmaster !=''">
+                and headmaster = #{headmaster}
+            </if>
+
+        </where>
+        <if test="start!=null and size!=null">limit ${start},${size}</if>
+    </select>
+
+    <select id="selectClassCount" parameterType="HashMap" resultType="Integer">
+        select count(*) from class
+        <where>
+            <if test="class_name!=null and class_name !=''">
+                and class_name = #{class_name}
+            </if>
+            <if test="grade!=null and grade!=''">
+                and grade like concat('%',#{grade},'%')
+            </if>
+            <if test="frequency !=null and frequency!=''">
+                and frequency = #{frequency}
+            </if>
+            <if test="class_place!=null and class_place !=''">
+                and class_place = #{class_place}
+            </if>
+            <if test="class_size!=null and class_size !=''">
+                and class_size = #{class_size}
+            </if>
+            <if test="headmaster!=null and headmaster !=''">
+                and headmaster = #{headmaster}
+            </if>
+
+
+        </where>
+    </select>
+</mapper>

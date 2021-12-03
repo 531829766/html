@@ -2,14 +2,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: 27193
-  Date: 2020/12/10
-  Time: 10:54
+  Date: 2021/10/21
+  Time: 10:09
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>学生列表</title>
+    <title>Title</title>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/delete" method="post">
@@ -19,14 +19,12 @@
 
             <td>用户名</td>
         </tr>
-<c:forEach items="${list}" var="student">
-    <tr>
-        <td><input type="checkbox" name="ids" value="${student.id}"> </td>
-        <td>${student.username}</td>
-    </tr>
-</c:forEach>
-
-
+        <c:forEach items="${commoditylist}" var="ct">
+            <tr>
+                <td><input type="checkbox" name="ids" value="${ct.id}"> </td>
+                <td>${ct.commodity_name}</td>
+            </tr>
+        </c:forEach>
     </table>
 
     <input type="submit" value="删除">

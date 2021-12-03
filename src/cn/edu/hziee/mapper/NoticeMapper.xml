@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.hziee.mapper.NoticeMapper">
+
+    <!--按id查找用户-->
+    <select id="findNoticeById" parameterType="Integer" resultType="cn.edu.hziee.model.Notice">
+
+    select * from  notice  where id=#{id}
+</select>
+    <!--按用户名查找用户-->
+    <select id="findNoticeByIdName" parameterType="string" resultType="cn.edu.hziee.model.Notice">
+    select * from notice where title=#{title}
+</select>
+
+
+    <!--注册/添加 顾客/用户-->
+    <insert id="insertNotice" parameterType="cn.edu.hziee.model.Notice">
+    insert into notice(id,title,content) values(#{id},#{title},#{content})
+</insert>
+    <!--更新用户余额-->
+    <update id="updateUserBalanceByUid" parameterType="cn.edu.hziee.model.Notice" >
+        update  notice
+        <set>
+            <choose>
+                <when test="content!=null">
+                    content=#{content}
+                </when>
+            </choose>
+        </set>
+        <where>
+            <if test="id!=null">
+                and id=#{id}
+            </if>
+        </where>
+
+    </update>
+    <select id="findByNoticePage" parameterType="HashMap" resultType="cn.edu.hziee.model.Notice">
+        select * from notice
+        <where>
+            <if test="title!=null and title !=''">
+                and  title = #{title}
+            </if>
+            <if test="content!=null and content !=''">
+                and  content
+                like concat('%',#{content},'%')
+            </if>
+
+        </where>
+        <if test="start!=null and size!=null">limit ${start},${size}</if>
+    </select>
+
+    <select id="selectNoticeCount" parameterType="HashMap" resultType="Integer">
+        select count(*) from notice
+        <where>
+            <if test="title!=null and title !=''">
+                and  title = #{title}
+            </if>
+            <if test="content!=null and content !=''">
+                and  content
+                like concat('%',#{content},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>
