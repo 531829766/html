@@ -1,0 +1,88 @@
+
+<html lang="zh">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>添加科室</title>
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+            <div class="container-fluid">
+               <div class="iq-card">
+                  <div class="iq-card-header d-flex justify-content-between">
+                     <div class="iq-header-title">
+                        <h4 class="card-title">添加科室</h4>
+                     </div>
+                  </div>
+                  <div class="iq-card-body">
+							<div class="topbtn">
+							<a href="ksfl.html" class="btn btn-info">返回</a>
+							</div>
+							
+							<div class="inputbox" >
+
+								<ul class="row">
+									<li class="col-md-9">
+										<div>
+
+											<ul class="row">
+												<li class=" col-md-4">
+													<h5 class="mt-2">科室名称</h5>
+													<fieldset class="form-group">
+														   <input type="text" class="form-control">
+														</fieldset>
+													</li>
+
+
+													<li class=" col-md-12">  <h5 class="mt-2">创建时间</h5>
+														<fieldset class="form-group">
+															 <input type="text" class="form-control">
+															</fieldset></li>
+													<li class="col-md-12"> <h5 class="mt-2">包含医生</h5>
+                                                      <fieldset class="form-group">
+                                                         <textarea class="form-control" rows="5"></textarea>
+                                                      </fieldset></li>		
+                                                   <li class="col-md-12"> <h5 class="mt-2">科室简介</h5>
+                                                      <fieldset class="form-group">
+                                                         <textarea class="form-control" rows="5"></textarea>
+                                                      </fieldset></li>
+										
+								
+						 
+
+							</div>
+
+
+
+
+
+							<div class="text-center">
+							<button class="btn btn-primary">确认提交</button>
+							</div>
+							
+						</div>
+               </div>
+            </div>
+ 
+         </div>
+      </div>
+
+
+
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/smooth-scrollbar.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="laydate/laydate.js"></script> 
+		<script>
+			lay('#version').html('-v'+ laydate.v);
+			laydate.render({
+				elem: '#date'
+			  ,range: true
+			  ,theme: '#2c9eae'
+			});
+         </script>
+         
+
+</body>
+</html>

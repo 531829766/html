@@ -1,0 +1,114 @@
+
+<html lang="zh">
+   <head>
+      
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>患者列表</title>
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+         <div id="content-page" >
+            <div class="container-fluid">
+               <div class="iq-card">
+                  <div class="iq-card-header d-flex justify-content-between">
+                     <div class="iq-header-title">
+                        <h4 class="card-title">患者列表</h4>
+                     </div>
+                  </div>
+                  <div class="iq-card-body">
+              
+              <div class="selbox">
+              <div class="form1">
+            <ul class="row">
+              <li class="col-xs-4">
+                <span>患者姓名：</span>
+                <input type="text" class="form-control">
+              </li>
+              
+              <li class="col-xs-4">
+                <span>所属科室：</span>
+                <input type="text" class="form-control">
+              </li>
+                     <li class="col-xs-4">
+                        <span>患者电话：</span>
+                        <input type="text" class="form-control">
+                     </li>
+              <li class="col-xs-4" style="padding-left: 10px">
+                <a href="javascript:;" class="btn btn-primary">查询</a>
+              </li>
+              </ul>
+            </div>
+                
+                
+                
+              </div>
+              <table class="table">
+              <thead>                 
+                <tr>
+                <th><input type="checkbox" class="allsel"></th>
+                <th>患者姓名</th>
+                <th>患者密码</th>
+                <th>患者电话</th>
+                <th>所属科室</th>
+                <th>患者身份证号码</th>
+                <th>操作</th>
+                </tr>
+              </thead>
+                     <tbody>
+                <tr>
+                <td><input type="checkbox"></td>
+                <td>a</td>
+                <td>456123</td>
+                        <td>561234</td>
+                <td>内科</td>
+                  <td>1234356</td>
+                  <td><a href="padd.html">修改</a></td>
+                </tr>
+              </tbody>
+              </table>
+          <div class="">
+                        <a href="padd.html" class="btn btn-bg-gradient-x-purple-red">添加</a>
+                <a href="javascript:;" class="btn btn-danger">删除</a>
+    
+              </div>
+              <nav aria-label="Page navigation" class="page">
+                      <ul class="pagination">
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;" aria-label="Previous">
+                            <span aria-hidden="true">上一页</span>
+                          </a>
+                        </li>
+                                    <li class="page-item active"><a class="page-link" href="javascript:;">1</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">4</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:;">5</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="javascript:;" aria-label="Next">
+                            <span aria-hidden="true">下一页</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+              
+            </div>
+               </div>
+            </div>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/smooth-scrollbar.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="laydate/laydate.js"></script> 
+    <script>
+      lay('#version').html('-v'+ laydate.v);
+      laydate.render({
+        elem: '#date'
+        ,range: true
+        ,theme: '#2c9eae'
+      });
+         </script>
+         
+
+</body>
+</html>
